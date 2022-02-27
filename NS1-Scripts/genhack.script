@@ -1,0 +1,79 @@
+const target_server = args[0];
+
+// Shows an alart to the user if they don't assign a target server.
+if (target_server === undefined) {
+	alert('Specify a target server!');
+	return
+}
+
+hack_count = 0;
+grow_count = 0;
+weaken_count = 0;
+const should_hack = args[1] = false;
+const max_money = getServerMaxMoney(target_server) * 0.75; // Edit this number to change the Available Money Threshold. Default is "* 0.75"
+const base_sec = getServerMinSecurityLevel(target_server) * 1.25; // Edit this number to change the Security Level Threshold. Default is "* 1.25"
+
+// Attempts to use all available programs to open any ports, and gain root access.
+if (fileExists("BruteSSH.exe", "home")) {
+	brutessh(target_server);
+}
+
+if (fileExists("FTPCrack.exe", "home")) {
+	ftpcrack(target_server);
+}
+
+if (fileExists("HTTPWorm.exe", "home")) {
+	httpworm(target_server);
+}
+
+if (fileExists("relaySMTP.exe", "home")) {
+	relaysmtp(target_server);
+}
+        
+if (hasRootAccess(target_server) == false) {
+	nuke(target_server);
+}
+/**---------------------------------------**/
+
+// Checks if the script has access to Root, and if the variable 'should_hack' was false or unspecified. Exits script.
+if (should_hack == false, hasRootAccess(target_server) == true) {
+	tprint("Not hacking, variable 'should_hack' was false or unspecified.);
+	return
+}
+
+// Checks if the script has access to Root, and exits if it doesn't.
+if (hasRootAccess(target_server) == false) {
+	tprint('No access to Root! Exiting script.);
+	return
+}
+
+/*
+Disabled by default due to RAM limitations, enable if you can run a 34.80gb script.
+installBackdoor(target_server);
+*/
+
+// Repeatedly weakens, grows, or hacks the target server if variable 'should_hack' is true.
+while (should_hack == true) {
+	// Checks if the target server is below the Security Threshold, and uses weaken() if it isn't.
+	if (getServerSecurityLevel(target_server) > base_sec) {
+		weaken_count++;
+		print('-----Beginning Weaken ' + weaken_count + '-----');
+		weaken(target_server);
+		print('-----Security Level decreased to ' + getServerSecurityLevel(target_server) + '-----');
+	}
+	// Checks if the target server is above the Available Money Threshold, and uses grow() if it isn't.
+	else if (getServerMoneyAvailable(target_server) < max_money) {
+		grow_count++;
+		print('-----Beginning Grow ' + grow_count + '-----');
+		grow(target_server);
+		print('-----Available Money increased to ' + getServerMoneyAvailable(target_server) + '-----');
+	}
+	// Hacks the target server, and prints the Security Level and Available Money afterwards.
+	else {
+		hack_count++;
+		print('-----Beginning Hack ' + hack_count + '-----');
+		hack(target_server);
+		print('-----Security Level increased to ' + getServerSecurityLevel(target_server) + '-----');
+		print('-----Available Money decreased to ' + getServerMoneyAvailable(target_server) + '-----');
+    }
+}
