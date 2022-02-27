@@ -3,7 +3,7 @@ This is just a little thing so that anybody who wants to can follow along with m
 
 A compilation of all my NS2 & .script scripts for the game "Bitburner".
 
-### NS2 & .script Files are in the 2 branches. My save file will be here.
+### NS2 & .script Files are in the folders. My save file will be here.
 
 # Socials
 
