@@ -1,7 +1,7 @@
 # Bitburner-Scripts
 This is just a little thing so that anybody who wants to can follow along with me while I learn to program.
 
-A compilation of all my JS2 scripts for the game "Bitburner".
+A compilation of all my NS2 scripts for the game "Bitburner".
 
 **Game socials**:
 - [Steam](https://store.steampowered.com/app/1812820/Bitburner/)
