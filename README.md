@@ -1,4 +1,4 @@
-# Bitburner-NS2-scripts
+# Bitburner-Scripts
 This is just a little thing so that anybody who wants to can follow along with me while I learn to program.
 
 A compilation of all my JS2 scripts for the game "Bitburner".
