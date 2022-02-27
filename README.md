@@ -1,9 +1,9 @@
 # Bitburner-Scripts
 This is just a little thing so that anybody who wants to can follow along with me while I learn to program.
 
-A compilation of all my NS2 & .script scripts for the game "Bitburner".
+A compilation of all my NS2 & NS1 scripts for the game "Bitburner".
 
-### NS2 & .script Files are in the folders. My save file will be here.
+### NS2 (.js) & NS1 (.script) Files are in the folders. My save file will be here.
 
 # Socials
 
