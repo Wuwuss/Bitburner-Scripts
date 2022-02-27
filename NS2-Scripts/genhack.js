@@ -12,7 +12,7 @@ export async function main(ns) {
 	let hack_count = 0;
 	let grow_count = 0;
 	let weaken_count = 0;
-	const should_hack = ns.args[1] = false;
+	const should_hack = ns.args[1];
 	const max_money = ns.getServerMaxMoney(target_server) * 0.75; // Edit this number to change the Available Money Threshold. Default; * 0.75.
 	const base_sec = ns.getServerMinSecurityLevel(target_server) * 1.25; // Edit this number to change the Security Level Threshold. Default; * 1.25.
 	
@@ -39,14 +39,14 @@ export async function main(ns) {
 	/**-----------------------------------------**/
 
 	// Checks if the script has access to Root, and if the variable 'should_hack' was false or unspecified. Exits script.
-	if (should_hack == false, ns.hasRootAccess(target_server) == true) {
+	if (should_hack === undefined) {
 		ns.tprint("Not hacking, variable 'should_hack' was false or unspecified.");
 		return
 	}
 	
 	// Checks if the script has access to Root, and exits if it doesn't.
 	if (ns.hasRootAccess(target_server) == false) {
-		ns.tprint('No access to root! Exiting script.');
+		ns.tprint('No access to Root! Exiting script.');
 		return
 	}
 	
